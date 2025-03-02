@@ -44,9 +44,11 @@ export class Repository {
   private getFilesRecursively(dir: string): string[] {
     let results: string[] = [];
     const list = fs.readdirSync(dir);
+
     list.forEach((file) => {
       const filePath = path.join(dir, file);
       const stat = fs.statSync(filePath);
+
       if (stat && stat.isDirectory()) {
         if (file === ".my-git") return; // пропускаємо директорію репозиторію
         results = results.concat(this.getFilesRecursively(filePath));
@@ -54,6 +56,7 @@ export class Repository {
         results.push(filePath);
       }
     });
+
     return results;
   }
 

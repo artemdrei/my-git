@@ -1,20 +1,51 @@
-import { Repository } from "./repository";
+import { Git } from "./git";
 
-const command = process.argv[2];
+class CLI {
+  private git: Git;
 
-if (command === "init") {
-  const repo = new Repository(process.cwd());
-  repo.init();
-} else if (command === "commit") {
-  const commitMessage = process.argv.slice(3).join(" ");
-  if (!commitMessage) {
-    console.log("Будь ласка, надайте повідомлення для коміту.");
-    process.exit(1);
+  constructor() {
+    this.git = new Git(process.cwd());
   }
-  const repo = new Repository(process.cwd());
-  repo.commit(commitMessage);
-} else {
-  console.log(
-    'Невідома команда. Використовуйте "init" для ініціалізації репозиторію або "commit" для створення коміту.'
-  );
+
+  parseArgs(args: string[]): void {
+    const command = args[2];
+
+    switch (command) {
+      case "init":
+        this.init();
+
+        break;
+      case "commit":
+        this.commit(args.slice(3));
+
+        break;
+      default:
+        this.showHelp();
+        break;
+    }
+  }
+
+  private init(): void {
+    this.git.init();
+  }
+
+  private commit(args: string[]): void {
+    const commitMessage = args.join(" ");
+
+    if (!commitMessage) {
+      console.log("Please provide a message for the committee.");
+      process.exit(1);
+    }
+
+    this.git.commit(commitMessage);
+  }
+
+  private showHelp(): void {
+    console.log(
+      "Unknown command. Use “init” to initialize the repository or “commit” to create a commit."
+    );
+  }
 }
+
+const cli = new CLI();
+cli.parseArgs(process.argv);

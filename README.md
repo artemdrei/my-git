@@ -110,7 +110,7 @@ Commit 3
   git checkout <commit-hash>
   ```
 
-## 🔍 Viewing Git Objects
+## 🔍 Git commands
 
 ```sh
 git cat-file -t <hash>  # Determine the type of an object (blob, tree, commit, tag)

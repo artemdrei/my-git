@@ -11,6 +11,7 @@ export class FileService {
 
   createDirectory(dirPath: string): void {
     const fullPath = path.join(this.basePath, dirPath);
+
     if (!fs.existsSync(fullPath)) {
       fs.mkdirSync(fullPath, { recursive: true });
     }

@@ -1,6 +1,6 @@
 import * as path from "path";
-import { FileService } from "./services/file-Service";
-import { Blob, Tree, Commit } from "./models/git-Objects";
+import { FileService } from "./services/fileService";
+import { Blob, Tree, Commit } from "./models/gitObjects";
 
 export class Git {
   private fileService: FileService;

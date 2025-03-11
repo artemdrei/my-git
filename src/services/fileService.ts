@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { IgnoreService } from "./ignore-Service";
+import { IgnoreService } from "./ignoreService";
 
 export class FileService {
   private ignoreService: IgnoreService;

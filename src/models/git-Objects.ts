@@ -1,6 +1,6 @@
 import * as path from "path";
 import { createHash } from "../utils/createHash";
-import type { FileService } from "../services/FileService";
+import type { FileService } from "../services/file-Service";
 
 export abstract class GitObject {
   constructor(protected fileService: FileService) {}

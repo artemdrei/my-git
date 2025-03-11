@@ -116,11 +116,11 @@ Commit 3
 git cat-file -t <hash>  # Determine the type of an object (blob, tree, commit, tag)
 git cat-file -p <hash>  # View the content of an object
 git cat-file -s <hash>  # View the size of an blob
-git reflog # to “rescue” what was lost.
+git count-objects -v  # View stats
 git log --online --graph # for convenient viewing of the history and branch structure.
 git bisect # is a tool for finding a commit that “broke” the code
 
 # Garbage collector
 git gc # Pack files
-find .git/objects -type f # Find packed files after git gc
+find .git/objects -type f <pack source> # Find packed files after git gc
 ```

@@ -18,7 +18,15 @@ export class Git {
         "[core]\n\trepositoryformatversion = 0\n\tfilemode = true\n"
       );
       this.fileService.createDirectory(path.join(this.gitDir, "objects"));
-      this.fileService.writeFile(path.join(this.gitDir, "HEAD"), "");
+      this.fileService.createDirectory(path.join(this.gitDir, "refs/heads"));
+      this.fileService.writeFile(
+        path.join(this.gitDir + "/refs/heads", "main"),
+        ""
+      );
+      this.fileService.writeFile(
+        path.join(this.gitDir, "HEAD"),
+        "ref: refs/heads/main"
+      );
       console.log(
         "The repository was successfully initialized in",
         path.join(this.repoPath, this.gitDir)
